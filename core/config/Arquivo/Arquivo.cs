@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.Text;
+using Energytrack.core.DTO;
 
 class Arquivo
 {
@@ -53,13 +55,47 @@ class Arquivo
             fluxoEscrita.WriteLine(cabecalho);
             fluxoEscrita.WriteLine("--------------------------");
 
-            // Escreve os dados do abastecimento no arquivo
+            // Escreve os dados no arquivo
             foreach (string dado in dados)
             {
                 fluxoEscrita.WriteLine($"{dado};");
             }
             fluxoEscrita.WriteLine();
-            // Fecha o arquivo
+            fluxoEscrita.Close();
+            fileStream.Close();
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("Arquivo não encontrado: " + path);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro: " + ex.Message);
+        }
+    }
+
+
+    public void EscritaArquivoUsuario(string cabecalho, List<UsuarioPessoaJuridicaDTO> dados)
+    {
+        try
+        {
+            FileStream fileStream = new FileStream(path, FileMode.Append, FileAccess.Write);
+            StreamWriter fluxoEscrita = new StreamWriter(fileStream, Encoding.UTF8);
+
+            // Escreve o cabeçalho no arquivo
+            fluxoEscrita.WriteLine("--------------------------");
+            fluxoEscrita.WriteLine(cabecalho);
+            fluxoEscrita.WriteLine("--------------------------");
+
+            // Escreve os dados no arquivo
+            System.Collections.IList list = dados;
+            for (int i = 0; i < list.Count; i++)
+            {
+                List<UsuarioPessoaJuridicaDTO> dado = (List<UsuarioPessoaJuridicaDTO>)list[i];
+
+                fluxoEscrita.WriteLine($"{dado};");
+            }
+            fluxoEscrita.WriteLine();
             fluxoEscrita.Close();
             fileStream.Close();
         }

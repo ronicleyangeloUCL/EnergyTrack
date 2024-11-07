@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ronicleyangelo/Documentos/estrtutura_de_dados/Energytrack/Energytrack.csproj",
+      "projectUniqueName": "/home/ronicleyangelo/Documentos/projeto/Energytrack/Energytrack.csproj",
       "projectName": "Energytrack",
-      "projectPath": "/home/ronicleyangelo/Documentos/estrtutura_de_dados/Energytrack/Energytrack.csproj",
+      "projectPath": "/home/ronicleyangelo/Documentos/projeto/Energytrack/Energytrack.csproj",
       "packagesPath": "/home/ronicleyangelo/.nuget/packages/",
-      "outputPath": "/home/ronicleyangelo/Documentos/estrtutura_de_dados/Energytrack/obj/",
+      "outputPath": "/home/ronicleyangelo/Documentos/projeto/Energytrack/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ronicleyangelo/.nuget/NuGet/NuGet.Config"

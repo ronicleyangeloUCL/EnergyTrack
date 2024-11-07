@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-class Medidor
+public class Medidor
 {
     private string _apelido;
     private string _serial;

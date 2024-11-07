@@ -39,7 +39,8 @@ class MenuService
         switch (escolha)
         {
             case 1: 
-                
+                Usuario usuario = new Usuario();
+                usuario.cadastroUsuarioPessoaJuridica();
                 break;
             case 2:
                 Console.WriteLine("Medidor selecionado.");
