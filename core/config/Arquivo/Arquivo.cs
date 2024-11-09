@@ -42,7 +42,7 @@ class Arquivo<T> : IArquivo<T>
         }
     }
 
-    public void EscritaArquivo(string cabecalho, List<T> t)
+    public void EscritaArquivo<T>(string cabecalho, List<T> t)
     {
         try
         {

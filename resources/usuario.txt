@@ -13,3 +13,52 @@ Medidores:
   Apelido: 4004, Serial: 4004
 ;
 
+--------------------------
+Cadastro de Usuário Pessoa Jurídica
+--------------------------
+Nome da Empresa: tony
+CNPJ: 11111111111111
+Medidores:
+ 0. System.Collections.Generic.List`1[Medidor] 1. System.Collections.Generic.List`1[Medidor] 2. System.Collections.Generic.List`1[Medidor] 3. System.Collections.Generic.List`1[Medidor];
+
+--------------------------
+Cadastro de Usuário Pessoa Jurídica
+--------------------------
+Nome da Empresa: ronu
+CNPJ: 11111111111111
+Medidores:
+ 0. Apelido: 4040, Serial: 4004 0. Apelido: 4040, Serial: 4040 0. Apelido: 5050, Serial: 5050 1. Apelido: 4040, Serial: 4004 1. Apelido: 4040, Serial: 4040 1. Apelido: 5050, Serial: 5050 2. Apelido: 4040, Serial: 4004 2. Apelido: 4040, Serial: 4040 2. Apelido: 5050, Serial: 5050 3. Apelido: 4040, Serial: 4004 3. Apelido: 4040, Serial: 4040 3. Apelido: 5050, Serial: 5050;
+
+--------------------------
+Cadastro de Usuário Pessoa Jurídica
+--------------------------
+Nome da Empresa: ronu
+CNPJ: 33333333333333
+Medidores:
+  0. Apelido: 404; Serial: 404
+  1. Apelido: 6060; Serial: 6060
+  2. Apelido: 700; Serial: 700
+;
+
+--------------------------
+Cadastro de Usuário Pessoa Jurídica
+--------------------------
+Nome da Empresa: Teste FInal;
+CNPJ: 12345678901234;
+Medidores:
+  0. Apelido: 2020; Serial: 2020;
+  1. Apelido: 1010; Serial: 1010;
+  2. Apelido: 2020; Serial: 2020;
+  3. Apelido: 3030; Serial: 3030;
+  4. Apelido: 4004; Serial: 4004;
+;
+
+--------------------------
+Cadastro de Usuário Pessoa Física
+--------------------------
+Nome da Empresa: ronicley;
+CPF: 19047764773;
+Medidores:
+  0. Apelido: 2020; Serial: 2020;
+;
+
