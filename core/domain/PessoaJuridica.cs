@@ -64,6 +64,7 @@ public class PessoaJuridica : Usuario
 
             Medidor medidor = new Medidor(apelidoMedidor, serialMedidor);
 
+            // VERIFICAR SE O SERIAL JÁ EXISTE 
             listaMedidores.Add(medidor);
             Console.WriteLine();
             Console.WriteLine("Medidor cadastrado com sucesso!");
@@ -101,3 +102,5 @@ public class PessoaJuridica : Usuario
         return cnpj.Length == 14 && cnpj.All(char.IsDigit);
     }
 }
+
+// OBS POSSO CRIAR UM CLASSE MEDIÇÃO ONDE FICARÁ OS RELATÓRIOS DE CADA CONSUMO 

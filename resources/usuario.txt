@@ -62,3 +62,13 @@ Medidores:
   0. Apelido: 2020; Serial: 2020;
 ;
 
+--------------------------
+Cadastro de Usuário Pessoa Física
+--------------------------
+Nome da Empresa: Ronicley;
+CPF: 19047764754;
+Medidores:
+  0. Apelido: Sala; Serial: 2020;
+  1. Apelido: COzinha; Serial: 5050;
+;
+
