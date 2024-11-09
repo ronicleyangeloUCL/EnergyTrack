@@ -9,7 +9,7 @@ namespace Energytrack.core.domain
     {
         private string _cpf;
 
-        public PessoaFisica(){}
+        public PessoaFisica() { }
 
         public PessoaFisica(string cpf, string nome, List<Medidor> medidor) : base(nome, medidor)
         {
@@ -21,6 +21,14 @@ namespace Energytrack.core.domain
         public void SetCpf(string cpf)
         {
             this._cpf = cpf;
+        }
+
+        public void cadastroUsuarioPessoaFisica()
+        {
+            Console.WriteLine("------------------");
+            Console.WriteLine("Cadastro de Pessoa Física");
+            Console.WriteLine("------------------");
+            Console.WriteLine("Informe o seu nome");
         }
     }
 }

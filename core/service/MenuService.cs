@@ -1,4 +1,5 @@
 using System;
+using Energytrack.core.domain;
 
 class MenuService
 {
@@ -39,8 +40,29 @@ class MenuService
         switch (escolha)
         {
             case 1: 
+                int escolhaPessoa;
                 Usuario usuario = new Usuario();
-                usuario.cadastroUsuarioPessoaJuridica();
+                Console.Clear();
+                Console.WriteLine("1 - Pessoa Física");
+                Console.WriteLine("2 - Pessoa Jurídica");
+                Console.WriteLine();
+                if(int.TryParse(Console.ReadLine(), out escolhaPessoa))
+                {
+                    switch(escolhaPessoa)
+                    {
+                        case 1 : 
+                            PessoaFisica pessoaFisica = new PessoaFisica();
+                            pessoaFisica.cadastroUsuarioPessoaFisica();
+                            break;
+                        case 2 : 
+                            PessoaJuridica pessoaJuridica = new PessoaJuridica();
+                            pessoaJuridica.CadastroUsuarioPessoaJuridica();
+                            break;
+                        default: 
+                            Console.WriteLine("Comando inválido");
+                            break;
+                    }
+                } 
                 break;
             case 2:
                 Console.WriteLine("Medidor selecionado.");

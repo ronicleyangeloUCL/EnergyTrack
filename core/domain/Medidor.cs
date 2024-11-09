@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 public class Medidor
@@ -19,7 +20,7 @@ public class Medidor
     }
 
     public string GetSerial() => this._serial;
-    public string GetApelido => this._apelido;
+    public string GetApelido() => this._apelido;
 
     public void SetSerial(string serial)
     {
@@ -29,5 +30,12 @@ public class Medidor
     public void SetApelido(string apelido)
     {
         this._apelido = apelido;
+    }
+
+    public List<Medidor> MedidoresList()
+    {
+        List<Medidor> list = new List<Medidor>();
+        list.Add(new Medidor(this._apelido, this._serial));
+        return list;
     }
 }
