@@ -45,7 +45,6 @@ class MenuService
                 Console.Clear();
                 Console.WriteLine("1 - Pessoa Física");
                 Console.WriteLine("2 - Pessoa Jurídica");
-                Console.WriteLine();
                 if(int.TryParse(Console.ReadLine(), out escolhaPessoa))
                 {
                     switch(escolhaPessoa)

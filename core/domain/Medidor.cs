@@ -32,10 +32,16 @@ public class Medidor
         this._apelido = apelido;
     }
 
-    public List<Medidor> MedidoresList()
+   public static List<Medidor> MedidoresList(string apelido, string serial)
     {
         List<Medidor> list = new List<Medidor>();
-        list.Add(new Medidor(this._apelido, this._serial));
+        Medidor medidor = new Medidor(apelido, serial); 
+        list.Add(medidor);
         return list;
+    }
+
+        public override string ToString()
+    {
+        return $"Apelido: {this._apelido}, Serial: {this._serial}";
     }
 }

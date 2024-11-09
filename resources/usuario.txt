@@ -1,30 +1,15 @@
 ﻿--------------------------
 Cadastro de Usuário Pessoa Jurídica
 --------------------------
-Nome: angelo, Apelido: sala, Serial: 1212;
+UsuarioPessoaJuridicaDTO;
 
 --------------------------
 Cadastro de Usuário Pessoa Jurídica
 --------------------------
-Nome: souza, Apelido: cozinha, Serial: 1313;
-
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome: nome, Apelido: rosas, Serial: 1234;
-
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome: relaxa, Apelido: tttt, Serial: 13131313;
-
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome: eqwe, Apelido: ioio, Serial: 1313;
-
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome: token, Apelido: 23232, Serial: 432423423;
+Nome da Empresa: ronicley
+CNPJ: 11111111111111
+Medidores:
+  Apelido: 2020, Serial: 3030
+  Apelido: 4004, Serial: 4004
+;
 

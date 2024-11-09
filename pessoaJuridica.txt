@@ -1,0 +1,26 @@
+Nome da Empresa: ewqeq
+CNPJ: 11111111111111
+Lista de Medidores:
+Apelido: eqweqw, Serial: 1010
+Apelido: pppppp, Serial: 4040
+
+Nome da Empresa: terabyte
+CNPJ: 11111111111111
+Lista de Medidores:
+Apelido: 2020, Serial: 2020
+Apelido: 10, Serial: 10
+Apelido: 30, Serial: 30
+
+Nome da Empresa: rerere
+CNPJ: 11111111111111
+Lista de Medidores:
+Apelido: 4040, Serial: 4040
+Apelido: 3030, Serial: 3030
+Apelido: 5050, Serial: 5050
+
+Nome da Empresa: ROnicley
+CNPJ: 22222222222222
+Lista de Medidores:
+Apelido: 4040, Serial: 4040
+Apelido: 5050, Serial: 5050
+

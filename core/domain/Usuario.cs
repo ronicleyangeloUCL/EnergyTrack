@@ -1,10 +1,8 @@
 using Energytrack.core.domain;
-using Energytrack.core.DTO;
-
 public class Usuario
 {
     private string _nome;
-    private List<Medidor> _medidorList = new List<Medidor>();
+    protected List<Medidor> _medidorList = new List<Medidor>();
 
     public Usuario() { }
 
@@ -14,6 +12,10 @@ public class Usuario
         this._medidorList = medidor;
     }
 
+    public Usuario(string nome)
+    {
+        this._nome = nome;
+    }
     public string GetNome() => this._nome;
     public List<Medidor> GetMedidorList() => this._medidorList;
 
@@ -27,11 +29,11 @@ public class Usuario
         this._medidorList = medidores;
     }
 
-    public static void SalvarCadastroPessoaJuridica(string nomeEmpresa, string cnpj, string apelidoMedidor, string serialMedidor)
+    public static void SalvarCadastroPessoaJuridica(PessoaJuridica pessoaJuridica)
     {
         string path = "resources/usuario.txt";
 
-        UsuarioPessoaJuridicaDTO dados = new UsuarioPessoaJuridicaDTO(nomeEmpresa, apelidoMedidor, serialMedidor, cnpj);
+        UsuarioPessoaJuridicaDTO dados = new UsuarioPessoaJuridicaDTO(pessoaJuridica);
 
         Arquivo<UsuarioPessoaJuridicaDTO> arquivo = new Arquivo<UsuarioPessoaJuridicaDTO>(path);
         arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Jurídica", dados.UsuarioList());
@@ -39,12 +41,27 @@ public class Usuario
         Console.WriteLine("Os dados foram salvos no arquivo com sucesso.");
     }
 
+    // public static void Insert(PessoaJuridica pessoaJuridica)
+    // {
+    //     string path = "resources/usuario.txt";
+    //     UsuarioPessoaJuridicaDTO dados = new UsuarioPessoaJuridicaDTO(pessoaJuridica);
+    //     Arquivo<UsuarioPessoaJuridicaDTO> arquivo = new Arquivo<UsuarioPessoaJuridicaDTO>(path);
+    //     arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Jurídica", dados.UsuarioList());
+    // }
+
     public static void Insert(PessoaJuridica pessoaJuridica)
     {
         string path = "resources/usuario.txt";
+
+        // Cria o DTO para a pessoa jurídica
         UsuarioPessoaJuridicaDTO dados = new UsuarioPessoaJuridicaDTO(pessoaJuridica);
+
+        // Cria uma instância da classe Arquivo
         Arquivo<UsuarioPessoaJuridicaDTO> arquivo = new Arquivo<UsuarioPessoaJuridicaDTO>(path);
-        arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Jurídica", dados.UsuarioList());
+
+        // Escreve os dados no arquivo
+        arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Jurídica", new List<UsuarioPessoaJuridicaDTO> { dados });
     }
+
 
 }

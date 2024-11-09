@@ -1,58 +1,37 @@
-using Energytrack.core.domain;
+using System.Text;
 
-namespace Energytrack.core.DTO
+public class UsuarioPessoaJuridicaDTO
 {
-    public class UsuarioPessoaJuridicaDTO
+    private PessoaJuridica pessoaJuridica;
+
+    public UsuarioPessoaJuridicaDTO(PessoaJuridica pessoaJuridica)
     {
-        private string _nome;
-        private string _apelido;
-        private string _serial;
-        private string _cnpj;
-        public UsuarioPessoaJuridicaDTO() { }
-        public UsuarioPessoaJuridicaDTO(string nome, string apelido, string serial, string cnpj)
+        this.pessoaJuridica = pessoaJuridica;
+    }
+
+    public List<UsuarioPessoaJuridicaDTO> UsuarioList()
+    {
+        List<UsuarioPessoaJuridicaDTO> dados = new List<UsuarioPessoaJuridicaDTO>
         {
-            this._nome = nome;
-            this._apelido = apelido;
-            this._serial = serial;
-            this._cnpj = cnpj;
+            new UsuarioPessoaJuridicaDTO(pessoaJuridica) 
+        };
+
+        return dados;
+    }
+
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+
+        sb.AppendLine($"Nome da Empresa: {pessoaJuridica.GetNome()}");
+        sb.AppendLine($"CNPJ: {pessoaJuridica.GetCnpj()}");
+
+        sb.AppendLine("Medidores:");
+        foreach (var medidor in pessoaJuridica.GetMedidorList())
+        {
+            sb.AppendLine($"  Apelido: {medidor.GetApelido()}, Serial: {medidor.GetSerial()}");
         }
 
-        public UsuarioPessoaJuridicaDTO(PessoaJuridica pessoaJuridica)
-        {
-            this._nome = pessoaJuridica.GetNome();
-            List<Medidor> list = pessoaJuridica.GetMedidorList();
-            foreach (Medidor item in list)
-            {
-                this._apelido = item.GetApelido();
-                this._serial = item.GetSerial();
-            }
-            this._cnpj = pessoaJuridica.GetCnpj();
-        }
-        public string GetApelido() => this._apelido;
-        public string GetNome() => this._nome;
-        public string GetSerial() => this._serial;
-        public void SetNome(string value)
-        {
-            this._nome = value;
-        }
-        public void SetApelido(string value)
-        {
-            this._apelido = value;
-        }
-        public void SetSerial(string value)
-        {
-            this._serial = value;
-        }
-        public List<UsuarioPessoaJuridicaDTO> UsuarioList()
-        {
-            List<UsuarioPessoaJuridicaDTO> list = new List<UsuarioPessoaJuridicaDTO>();
-            list.Add(new UsuarioPessoaJuridicaDTO(this._nome, this._apelido, this._serial, this._cnpj));
-            return list;
-        }
-        public override string ToString()
-        {
-            return $"Nome: {this._nome}, Apelido: {this._apelido}, Serial: {this._serial}";
-        }
-
+        return sb.ToString();
     }
 }

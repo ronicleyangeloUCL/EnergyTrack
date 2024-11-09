@@ -1,7 +1,5 @@
 using System.ComponentModel;
 using System.Text;
-using Energytrack.core.DTO;
-
 class Arquivo<T> : IArquivo<T>
 {
     private string path;
