@@ -42,9 +42,60 @@ public class Medidor
 
     public static bool isSerial(List<Medidor> list)
     {
-        
+
         return true;
     }
+
+
+    public static List<Medidor> CadastroMedidor()
+    {
+        string? continuar = "S";
+
+        List<Medidor> listaMedidores = new List<Medidor>();
+
+        while (continuar.ToUpper() == "S")
+        {
+            Console.Clear();
+            Console.WriteLine("Digite o apelido do medidor:");
+            string? apelido = Console.ReadLine();
+
+            Console.WriteLine("Digite o serial do medidor:");
+            string? serial = Console.ReadLine();
+
+            // Verificação de duplicidade
+            bool isDuplicate = false;
+            foreach (var medidor in listaMedidores)
+            {
+                if (serial.Equals(medidor.GetSerial(), StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Serial já existe na lista! Não foi possível cadastrar o medidor.");
+                    isDuplicate = true;
+                    break;
+                }
+            }
+
+            // Caso não seja duplicado, cadastra o medidor
+            if (!isDuplicate)
+            {
+                Medidor medidor = new Medidor(apelido, serial);
+                listaMedidores.Add(medidor);
+                Console.WriteLine();
+                Console.WriteLine("Medidor cadastrado com sucesso!");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Deseja cadastrar outro medidor? (S/N)");
+            continuar = Console.ReadLine()?.ToUpper();
+
+            while (continuar != "S" && continuar != "N")
+            {
+                Console.WriteLine("Erro: Entrada inválida. Digite S para sim ou N para não.");
+                continuar = Console.ReadLine()?.ToUpper();
+            }
+        }
+        return listaMedidores;
+    }
+
     public override string ToString()
     {
         return $"Apelido: {this._apelido}, Serial: {this._serial}";

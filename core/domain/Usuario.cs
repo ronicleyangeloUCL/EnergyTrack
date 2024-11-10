@@ -37,7 +37,7 @@ public class Usuario
 
         Arquivo<UsuarioPessoaJuridicaDTO> arquivo = new Arquivo<UsuarioPessoaJuridicaDTO>(path);
 
-        arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Jurídica", new List<UsuarioPessoaJuridicaDTO> { dados });
+        arquivo.EscritaArquivo("Pessoa Jurídica", new List<UsuarioPessoaJuridicaDTO> { dados });
     }
 
 

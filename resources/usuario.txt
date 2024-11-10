@@ -18,3 +18,13 @@ Medidores:
   1. Apelido: escritorio; Serial: 5050;
 ;
 
+--------------------------
+Cadastro de Usuário Pessoa Jurídica
+--------------------------
+Nome da Empresa: toni;
+CNPJ: 11111111111111;
+Medidores:
+  0. Apelido: 1212; Serial: 1212;
+  1. Apelido: 3434; Serial: 9090;
+;
+
