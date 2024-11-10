@@ -6,7 +6,7 @@ public class Medidor
     private string _apelido;
     private string _serial;
 
-    public Medidor() {}
+    public Medidor() { }
 
     public Medidor(string apelido, string serial)
     {
@@ -32,15 +32,20 @@ public class Medidor
         this._apelido = apelido;
     }
 
-   public static List<Medidor> MedidoresList(string apelido, string serial)
+    public static List<Medidor> MedidoresList(string apelido, string serial)
     {
         List<Medidor> list = new List<Medidor>();
-        Medidor medidor = new Medidor(apelido, serial); 
+        Medidor medidor = new Medidor(apelido, serial);
         list.Add(medidor);
         return list;
     }
 
-        public override string ToString()
+    public static bool isSerial(List<Medidor> list)
+    {
+        
+        return true;
+    }
+    public override string ToString()
     {
         return $"Apelido: {this._apelido}, Serial: {this._serial}";
     }

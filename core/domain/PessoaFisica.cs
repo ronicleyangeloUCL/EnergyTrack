@@ -7,7 +7,7 @@ namespace Energytrack.core.domain
 {
     public class PessoaFisica : Usuario
     {
-        private string _cpf;
+        private string _cpf = string.Empty;
 
         public PessoaFisica() { }
 
@@ -30,51 +30,18 @@ namespace Energytrack.core.domain
             Console.WriteLine("Cadastro de Pessoa Física");
             Console.WriteLine("------------------");
             Console.WriteLine("Informe o seu nome");
-            string nome = Console.ReadLine();
+            string? nome = Console.ReadLine();
 
-            string cpf = string.Empty;
-
-            while (true)
+            if(nome == null) 
             {
-                Console.WriteLine("Informe o seu CPF: ");
-                cpf = Console.ReadLine();
-
-                if (ValidarCPF(cpf))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("CPF inválido. Tente novamente.");
-                }
-            }
-
-            List<Medidor> listaMedidores = new List<Medidor>();
-
-            string continuar = "S";
-            while (continuar.ToUpper() == "S")
-            {
-                Console.Clear();
-                Console.WriteLine("Digite o apelido do medidor:");
-                string apelidoMedidor = Console.ReadLine();
-
-                Console.WriteLine("Digite o serial do medidor:");
-                string serialMedidor = Console.ReadLine();
-
-                Medidor medidor = new Medidor(apelidoMedidor, serialMedidor);
-
-                listaMedidores.Add(medidor);
                 Console.WriteLine();
-                Console.WriteLine("Medidor cadastrado com sucesso!");
-                Console.WriteLine("Deseja cadastrar outro medidor? (S/N)");
-
-                continuar = Console.ReadLine()?.ToUpper(); // Garantir que a entrada será maiúscula
-                while (continuar != "S" && continuar != "N")
-                {
-                    Console.WriteLine("Erro: Entrada inválida. Digite S para sim ou N para não.");
-                    continuar = Console.ReadLine()?.ToUpper();
-                }
+                Console.WriteLine("Nome inválido ou nulo.");
+                Console.WriteLine();
             }
+
+            string cpf = isValidtedCPF();
+
+            List<Medidor> listaMedidores = CadastroMedidordPessoaFisica();
 
             Console.WriteLine();
             Console.WriteLine("Cadastro finalizado.");
@@ -87,8 +54,11 @@ namespace Energytrack.core.domain
             }
 
             PessoaFisica pessoaFisica = new PessoaFisica();
-            pessoaFisica.SetCpf(cpf);
-            pessoaFisica.SetNome(nome);
+            if((cpf != null) && (nome != null))
+            {
+                pessoaFisica.SetCpf(cpf);
+                pessoaFisica.SetNome(nome);
+            }
             pessoaFisica.SetMedidorList(listaMedidores);
 
             Insert(pessoaFisica);
@@ -106,8 +76,77 @@ namespace Energytrack.core.domain
             UsuarioPessoaFisicaDTO<PessoaFisica> dados = new UsuarioPessoaFisicaDTO<PessoaFisica>(pessoaFisica);
 
             Arquivo<UsuarioPessoaFisicaDTO<PessoaFisica>> arquivo = new Arquivo<UsuarioPessoaFisicaDTO<PessoaFisica>>(path);
-            Console.WriteLine("ARQUIVO ", arquivo);
-            arquivo.EscritaArquivo("Cadastro de Usuário Pessoa Física", new List<UsuarioPessoaFisicaDTO<PessoaFisica>> { dados });
+            arquivo.EscritaArquivo("Pessoa Física", new List<UsuarioPessoaFisicaDTO<PessoaFisica>> { dados });
+        }
+
+        private List<Medidor> CadastroMedidordPessoaFisica()
+        {
+            string? continuar = "S";
+
+            List<Medidor> listaMedidores = new List<Medidor>();
+
+            while (continuar.ToUpper() == "S")
+            {
+                Console.Clear();
+                Console.WriteLine("Digite o apelido do medidor:");
+                string? apelido = Console.ReadLine();
+
+                Console.WriteLine("Digite o serial do medidor:");
+                string? serial = Console.ReadLine();
+
+                // Verificação de duplicidade
+                bool isDuplicate = false;
+                foreach (var medidor in listaMedidores)
+                {
+                    if (serial.Equals(medidor.GetSerial(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Serial já existe na lista! Não foi possível cadastrar o medidor.");
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+
+                // Caso não seja duplicado, cadastra o medidor
+                if (!isDuplicate)
+                {
+                    Medidor medidor = new Medidor(apelido, serial);
+                    listaMedidores.Add(medidor);
+                    Console.WriteLine();
+                    Console.WriteLine("Medidor cadastrado com sucesso!");
+                }
+                Console.WriteLine();
+                Console.WriteLine("Deseja cadastrar outro medidor? (S/N)");
+                continuar = Console.ReadLine()?.ToUpper(); 
+
+                while (continuar != "S" && continuar != "N")
+                {
+                    Console.WriteLine("Erro: Entrada inválida. Digite S para sim ou N para não.");
+                    continuar = Console.ReadLine()?.ToUpper();
+                }
+            }
+            return listaMedidores;
+        }
+
+        private string isValidtedCPF()
+        {
+            string cpf = string.Empty;
+            
+            while (true)
+            {
+                Console.WriteLine("Informe o seu CPF: ");
+                cpf = Console.ReadLine();
+
+                if (ValidarCPF(cpf))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("CPF inválido. Tente novamente.");
+                }
+            }
+            return cpf;
         }
     }
 }

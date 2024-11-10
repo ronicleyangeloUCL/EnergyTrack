@@ -25,7 +25,7 @@ public class UsuarioPessoaFisicaDTO<T> : IUsuario<T>
     {
         var sb = new StringBuilder();
 
-        sb.AppendLine($"Nome da Empresa: {pessoaFisica.GetNome()};");
+        sb.AppendLine($"Nome: {pessoaFisica.GetNome()};");
         sb.AppendLine($"CPF: {pessoaFisica.GetCpf()};");
 
         sb.AppendLine("Medidores:");

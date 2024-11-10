@@ -50,12 +50,10 @@ class Arquivo<T> : IArquivo<T>
             FileStream fileStream = new FileStream(path, FileMode.Append, FileAccess.Write);
             StreamWriter fluxoEscrita = new StreamWriter(fileStream, Encoding.UTF8);
 
-            // Escreve o cabeçalho no arquivo
             fluxoEscrita.WriteLine("--------------------------");
             fluxoEscrita.WriteLine(cabecalho);
             fluxoEscrita.WriteLine("--------------------------");
 
-            // Escreve os dados no arquivo
             foreach (T dado in t)
             {
                 fluxoEscrita.WriteLine($"{dado};");
