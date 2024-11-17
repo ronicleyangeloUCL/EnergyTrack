@@ -37,14 +37,14 @@ public class Medicao
 
         // Solicita o CPF ou CNPJ do usuário atual
         Console.WriteLine("Digite o CPF (Pessoa Física) ou CNPJ (Pessoa Jurídica) do usuário para registrar medições:");
-        string identificador = Console.ReadLine().Trim();  // CPF ou CNPJ
+        string identificador = Console.ReadLine().Trim(); 
 
         Usuario usuarioAtual = null;
 
-        // Encontra o usuário correspondente
         foreach (var usuario in listUsuario)
         {
-            Console.WriteLine("dados do usuario",usuario is PessoaFisica pfs && pfs.GetCpf() == identificador);
+            PessoaFisica pfs = new PessoaFisica();
+            Console.WriteLine("dados do usuario", pfs.GetCpf());
             if (usuario is PessoaFisica pf && pf.GetCpf() == identificador)
             {
                 usuarioAtual = pf;
@@ -126,6 +126,5 @@ public class Medicao
 
         return $"{medidoresInfo} | Data: {dataLeitura.ToString("dd/MM/yyyy")} | Consumo: {ativo} kWh";
     }
-
 
 }

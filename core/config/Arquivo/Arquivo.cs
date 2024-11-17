@@ -24,11 +24,13 @@ class Arquivo<T> : IArquivo<T>
         string[] lines = File.ReadAllLines(path);
 
         PessoaJuridica pessoaJuridica = null;
+        PessoaFisica pessoaFisica = null;
 
         foreach (string line in lines)
         {
             if (line.StartsWith("Nome da Empresa:"))
             {
+                // Se uma pessoa jurídica foi processada, adicione ela à lista
                 if (pessoaJuridica != null)
                 {
                     usuarios.Add(pessoaJuridica);
@@ -43,28 +45,54 @@ class Arquivo<T> : IArquivo<T>
             }
             else if (line.StartsWith("Nome:"))
             {
-                // Pessoa Física
-                PessoaFisica pessoaFisica = new PessoaFisica();
+                // Se houver uma pessoa física anterior, adicione ela à lista
+                if (pessoaFisica != null)
+                {
+                    usuarios.Add(pessoaFisica);
+                }
+
+                pessoaFisica = new PessoaFisica();
                 pessoaFisica.SetNome(ExtrairValor(line, "Nome:"));
-                // pessoaFisica.SetCpf(ExtrairValor(lines[Array.IndexOf(lines, line) + 1], "CPF:"));
-                pessoaFisica.SetCpf(ExtrairValor(line, "CPF:"));
-                usuarios.Add(pessoaFisica);
+            }
+            else if (line.StartsWith("CPF:"))
+            {
+                if (pessoaFisica != null)
+                {
+                    pessoaFisica.SetCpf(ExtrairValor(line, "CPF:"));
+                }
             }
             else if (line.Trim().StartsWith("0.") || line.Trim().StartsWith("1.") || line.Trim().StartsWith("2."))
             {
                 Medidor medidor = ProcessarLinhaMedidor(line);
-                pessoaJuridica?.GetMedidorList().Add(medidor);
+
+                if (pessoaJuridica != null)
+                {
+                    pessoaJuridica.GetMedidorList().Add(medidor);
+                }
+
+                if (pessoaFisica != null)
+                {
+                    pessoaFisica.GetMedidorList().Add(medidor);
+                }
             }
         }
 
+        // Adiciona a última pessoa jurídica ou física
         if (pessoaJuridica != null)
         {
-            usuarios.Add(pessoaJuridica); 
+            usuarios.Add(pessoaJuridica);
+        }
+        if (pessoaFisica != null)
+        {
+            usuarios.Add(pessoaFisica);
         }
 
+        foreach (var item in usuarios)
+        {
+            Console.WriteLine($"lISTA FINAL {item.GetNome()}");
+        }
         return usuarios;
     }
-
 
     static string ExtrairValor(string line, string chave)
     {
@@ -103,7 +131,6 @@ class Arquivo<T> : IArquivo<T>
                 }
             }
         }
-        Console.WriteLine($"medidores da pessoa fisica {medidor}");
         return medidor;
     }
 

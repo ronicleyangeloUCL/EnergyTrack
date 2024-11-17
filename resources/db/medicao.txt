@@ -18,3 +18,8 @@ Apelido: quarto, Serial: 5050 | Data: 12/12/2024 | Consumo: 1000 kWh;
 
 
 
+
+Apelido: cozinha, Serial: 9090 | Data: 12/12/2024 | Consumo: 9090 kWh;
+Apelido: sala de estar, Serial: 6060 | Data: 12/12/2023 | Consumo: 400 kWh;
+Apelido: quarto, Serial: 5050 | Data: 12/12/2050 | Consumo: 4000 kWh;
+
