@@ -76,7 +76,7 @@ namespace Energytrack.core.domain
             UsuarioPessoaFisicaDTO<PessoaFisica> dados = new UsuarioPessoaFisicaDTO<PessoaFisica>(pessoaFisica);
 
             Arquivo<UsuarioPessoaFisicaDTO<PessoaFisica>> arquivo = new Arquivo<UsuarioPessoaFisicaDTO<PessoaFisica>>(path);
-            arquivo.EscritaArquivo("Pessoa Física", new List<UsuarioPessoaFisicaDTO<PessoaFisica>> { dados });
+            arquivo.EscritaArquivo("", new List<UsuarioPessoaFisicaDTO<PessoaFisica>> { dados });
         }
         private string isValidtedCPF()
         {

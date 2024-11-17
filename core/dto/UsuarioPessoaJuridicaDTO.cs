@@ -23,15 +23,15 @@ public class UsuarioPessoaJuridicaDTO
     {
         var sb = new StringBuilder();
 
-        sb.AppendLine($"Nome da Empresa: {pessoaJuridica.GetNome()};");
-        sb.AppendLine($"CNPJ: {pessoaJuridica.GetCnpj()};");
+        sb.AppendLine($"Nome da Empresa:{pessoaJuridica.GetNome()};");
+        sb.AppendLine($"CNPJ:{pessoaJuridica.GetCnpj()};");
 
         sb.AppendLine("Medidores:");
 
         for (int i = 0; i < pessoaJuridica.GetMedidorList().Count; i++)
         {
             var medidor = pessoaJuridica.GetMedidorList()[i]; 
-            sb.AppendLine($"  {i}. Apelido: {medidor.GetApelido()}; Serial: {medidor.GetSerial()};");
+            sb.AppendLine($"  {i}. Apelido:{medidor.GetApelido()}; Serial:{medidor.GetSerial()};");
         }
 
         return sb.ToString();

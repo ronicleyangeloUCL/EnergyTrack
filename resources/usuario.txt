@@ -1,30 +1,17 @@
-﻿--------------------------
-Cadastro de Usuário Pessoa Física
---------------------------
-Nome: Ronicley Angelo;
-CPF: 19047764773;
+﻿
+Nome da Empresa:TONI;
+CNPJ:99999999999999;
 Medidores:
-  0. Apelido: sala; Serial: 1212;
-  1. Apelido: cozinha; Serial: 2020;
+  0. Apelido:Sala; Serial:1212;
+  1. Apelido:cozinha; Serial:4040;
+  2. Apelido:quarto; Serial:5050;
 ;
 
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome da Empresa: angelo;
-CNPJ: 11111111111111;
+Nome:Ronicley;
+CPF:11111111111;
 Medidores:
-  0. Apelido: quarto; Serial: 3030;
-  1. Apelido: escritorio; Serial: 5050;
-;
-
---------------------------
-Cadastro de Usuário Pessoa Jurídica
---------------------------
-Nome da Empresa: toni;
-CNPJ: 11111111111111;
-Medidores:
-  0. Apelido: 1212; Serial: 1212;
-  1. Apelido: 3434; Serial: 9090;
+  0. Apelido:cozinha; Serial:9090;
+  1. Apelido:sala de estar; Serial:6060;
+  2. Apelido:quarto; Serial:5050;
 ;
 

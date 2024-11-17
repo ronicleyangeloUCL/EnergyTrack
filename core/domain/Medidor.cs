@@ -14,6 +14,12 @@ public class Medidor
         this._serial = serial;
     }
 
+    public Medidor(MedidorDTO medidorDTO)
+    {
+        this._apelido = medidorDTO.GetApelido();
+        this._serial = medidorDTO.GetSerial();
+    }
+
     public bool IsMedidor(string serial)
     {
         return this._serial.Equals(serial) ? true : false;
@@ -96,6 +102,10 @@ public class Medidor
         return listaMedidores;
     }
 
+    public static List<Medidor> ListDTO(MedidorDTO dto)
+    {
+        return new List<Medidor> { new Medidor { _apelido = dto.GetApelido(), _serial = dto.GetSerial() } };
+    }
     public override string ToString()
     {
         return $"Apelido: {this._apelido}, Serial: {this._serial}";

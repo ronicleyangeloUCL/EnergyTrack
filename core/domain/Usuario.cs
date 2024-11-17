@@ -1,7 +1,7 @@
 using Energytrack.core.domain;
 public class Usuario
 {
-    private string _nome;
+    protected string _nome;
     protected List<Medidor> _medidorList = new List<Medidor>();
 
     public Usuario() { }
@@ -37,7 +37,7 @@ public class Usuario
 
         Arquivo<UsuarioPessoaJuridicaDTO> arquivo = new Arquivo<UsuarioPessoaJuridicaDTO>(path);
 
-        arquivo.EscritaArquivo("Pessoa Jurídica", new List<UsuarioPessoaJuridicaDTO> { dados });
+        arquivo.EscritaArquivo("", new List<UsuarioPessoaJuridicaDTO> { dados });
     }
 
 

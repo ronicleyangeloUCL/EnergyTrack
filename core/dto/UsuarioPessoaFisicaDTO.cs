@@ -25,15 +25,15 @@ public class UsuarioPessoaFisicaDTO<T> : IUsuario<T>
     {
         var sb = new StringBuilder();
 
-        sb.AppendLine($"Nome: {pessoaFisica.GetNome()};");
-        sb.AppendLine($"CPF: {pessoaFisica.GetCpf()};");
+        sb.AppendLine($"Nome:{pessoaFisica.GetNome()};");
+        sb.AppendLine($"CPF:{pessoaFisica.GetCpf()};");
 
         sb.AppendLine("Medidores:");
 
         for (int i = 0; i < pessoaFisica.GetMedidorList().Count; i++)
         {
             var medidor = pessoaFisica.GetMedidorList()[i];
-            sb.AppendLine($"  {i}. Apelido: {medidor.GetApelido()}; Serial: {medidor.GetSerial()};");
+            sb.AppendLine($"  {i}. Apelido:{medidor.GetApelido()}; Serial:{medidor.GetSerial()};");
         }
 
         return sb.ToString();

@@ -41,7 +41,6 @@ class MenuService
         {
             case 1: 
                 int escolhaPessoa;
-                Usuario usuario = new Usuario();
                 Console.Clear();
                 Console.WriteLine("1 - Pessoa Física");
                 Console.WriteLine("2 - Pessoa Jurídica");
@@ -64,6 +63,8 @@ class MenuService
                 } 
                 break;
             case 2:
+                Medicao medicao = new Medicao();
+                medicao.RegistroMedidor();
                 Console.WriteLine("Medidor selecionado.");
                 break;
             case 3:
@@ -80,7 +81,6 @@ class MenuService
                 break;
         }
 
-        // Pausa para que o usuário veja o resultado antes de continuar
         Console.WriteLine("Pressione qualquer tecla para continuar...");
         Console.ReadKey();
     }

@@ -9,6 +9,9 @@ public class PessoaJuridica : Usuario
     {
         this._cnpj = cnpj;
     }
+        public PessoaJuridica(string nome) : base(nome)
+    {
+    }
 
     public void SetCnpj(string cnpj) => _cnpj = cnpj;
     public string GetCnpj() => _cnpj;
@@ -28,22 +31,23 @@ public class PessoaJuridica : Usuario
         Console.WriteLine("Informe o nome da empresa:");
         string? nomeEmpresa = Console.ReadLine();
 
-        string? cnpj = string.Empty;
+        // string? cnpj = string.Empty;
 
-        while (true)
-        {
-            Console.WriteLine("Informe o CNPJ da empresa:");
-            cnpj = Console.ReadLine();
+        string? cnpj = isValidtedCNPJ();
+        // while (true)
+        // {
+        //     Console.WriteLine("Informe o CNPJ da empresa:");
+        //     cnpj = Console.ReadLine();
 
-            if (ValidarCNPJ(cnpj))
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine("CNPJ inválido. Tente novamente.");
-            }
-        }
+        //     if (ValidarCNPJ(cnpj))
+        //     {
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("CNPJ inválido. Tente novamente.");
+        //     }
+        // }
 
         Console.WriteLine();
         Console.WriteLine("---------------------------");
