@@ -16,7 +16,7 @@ class MenuService
             Console.WriteLine("Escolha uma opção");
             Console.WriteLine("--------------------------------");
             Console.WriteLine("1 - Usuário");
-            Console.WriteLine("2 - Medidor");
+            Console.WriteLine("2 - Registrar Medição");
             Console.WriteLine("3 - Visualizar Consumo");
             Console.WriteLine("4 - Relatório");
             Console.WriteLine("0 - Sair");
