@@ -1,0 +1,21 @@
+﻿Apelido: sala de estar, Serial: 4040
+ Data: 12/12/2024
+ Consumo: 200 kWh;
+
+Apelido: sala de estar, Serial: 4040
+ Data: 12/12/2024
+ Consumo: 400 kWh;
+
+Apelido: sala de estar, Serial: 4040;
+Data: 12/12/2024;
+Consumo: 400 kWh;
+
+sala de estar 4040;
+Data: 12/12/3000;
+Consumo: 3000 kWh;
+
+Apelido:sala de estar;
+ Serial:4040;
+Data: 12/12/2000;
+Consumo: 10000 kWh;
+

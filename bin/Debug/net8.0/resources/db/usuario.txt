@@ -1,0 +1,24 @@
+
+Nome da Empresa:TONI;
+CNPJ:99999999999999;
+Medidores:
+  0. Apelido:Sala; Serial:1212;
+  1. Apelido:cozinha; Serial:4040;
+  2. Apelido:quarto; Serial:5050;
+;
+
+Nome:Ronicley;
+CPF:11111111111;
+Medidores:
+  0. Apelido:cozinha; Serial:9090;
+  1. Apelido:sala de estar; Serial:6060;
+  2. Apelido:quarto; Serial:5050;
+;
+
+
+Nome:tonicley;
+CPF:33333333333;
+Medidores:
+  0. Apelido:sala de estar; Serial:4040;
+;
+
