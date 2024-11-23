@@ -71,7 +71,7 @@ namespace Energytrack.core.domain
 
         private void Insert(PessoaFisica pessoaFisica)
         {
-            string path = "resources/usuario.txt";
+            string path = "resources/db/usuario.txt";
 
             UsuarioPessoaFisicaDTO<PessoaFisica> dados = new UsuarioPessoaFisicaDTO<PessoaFisica>(pessoaFisica);
 

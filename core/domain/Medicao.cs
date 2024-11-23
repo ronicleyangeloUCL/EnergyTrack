@@ -28,7 +28,7 @@ public class Medicao
 
     public void RegistroMedidor()
     {
-        string caminhoListUsuario = "resources/usuario.txt";
+        string caminhoListUsuario = "resources/db/usuario.txt";
         string caminhoSaveMedicoes = "resources/db/medicao.txt";
 
         // Leitura de usuários do arquivo
@@ -119,12 +119,12 @@ public class Medicao
         medicoes.Add(medicao);
         Console.WriteLine($"Medição registrada: {medicao}");
     }
-
     public override string ToString()
     {
-        string medidoresInfo = string.Join(", ", medidor.Select(m => m.ToString()));
+        string medidoresInfo = string.Join(";\n", medidor.Select(m => $"Apelido:{m.GetApelido()};\nSerial:{m.GetSerial()}")) + ";";
 
-        return $"{medidoresInfo} | Data: {dataLeitura.ToString("dd/MM/yyyy")} | Consumo: {ativo} kWh";
+        return $"{medidoresInfo}\nData: {dataLeitura.ToString("dd/MM/yyyy")};\nConsumo: {ativo} kWh";
     }
+
 
 }

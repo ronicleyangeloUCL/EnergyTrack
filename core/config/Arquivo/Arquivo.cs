@@ -19,78 +19,13 @@ class Arquivo<T> : IArquivo<T>
 
     public static List<Usuario> LeituraArquivo(string path)
     {
-        List<Usuario> usuarios = new List<Usuario>();
-
         string[] lines = File.ReadAllLines(path);
 
         PessoaJuridica pessoaJuridica = null;
         PessoaFisica pessoaFisica = null;
 
-        foreach (string line in lines)
-        {
-            if (line.StartsWith("Nome da Empresa:"))
-            {
-                // Se uma pessoa jurídica foi processada, adicione ela à lista
-                if (pessoaJuridica != null)
-                {
-                    usuarios.Add(pessoaJuridica);
-                }
+        List<Usuario> usuarios = InterarListaUsuarios(pessoaFisica, pessoaJuridica, lines);
 
-                pessoaJuridica = new PessoaJuridica();
-                pessoaJuridica.SetNome(ExtrairValor(line, "Nome da Empresa:"));
-            }
-            else if (line.StartsWith("CNPJ:"))
-            {
-                pessoaJuridica.SetCnpj(ExtrairValor(line, "CNPJ:"));
-            }
-            else if (line.StartsWith("Nome:"))
-            {
-                // Se houver uma pessoa física anterior, adicione ela à lista
-                if (pessoaFisica != null)
-                {
-                    usuarios.Add(pessoaFisica);
-                }
-
-                pessoaFisica = new PessoaFisica();
-                pessoaFisica.SetNome(ExtrairValor(line, "Nome:"));
-            }
-            else if (line.StartsWith("CPF:"))
-            {
-                if (pessoaFisica != null)
-                {
-                    pessoaFisica.SetCpf(ExtrairValor(line, "CPF:"));
-                }
-            }
-            else if (line.Trim().StartsWith("0.") || line.Trim().StartsWith("1.") || line.Trim().StartsWith("2."))
-            {
-                Medidor medidor = ProcessarLinhaMedidor(line);
-
-                if (pessoaJuridica != null)
-                {
-                    pessoaJuridica.GetMedidorList().Add(medidor);
-                }
-
-                if (pessoaFisica != null)
-                {
-                    pessoaFisica.GetMedidorList().Add(medidor);
-                }
-            }
-        }
-
-        // Adiciona a última pessoa jurídica ou física
-        if (pessoaJuridica != null)
-        {
-            usuarios.Add(pessoaJuridica);
-        }
-        if (pessoaFisica != null)
-        {
-            usuarios.Add(pessoaFisica);
-        }
-
-        foreach (var item in usuarios)
-        {
-            Console.WriteLine($"lISTA FINAL {item.GetNome()}");
-        }
         return usuarios;
     }
 
@@ -159,6 +94,76 @@ class Arquivo<T> : IArquivo<T>
         }
     }
 
+    private static List<Usuario> InterarListaUsuarios(PessoaFisica pessoaFisica, PessoaJuridica pessoaJuridica, string[] lines)
+    {
+        List<Usuario> usuarioList = new List<Usuario>();
+
+        foreach (string line in lines)
+        {
+            if (line.StartsWith("Nome da Empresa:"))
+            {
+                // Se uma pessoa jurídica foi processada, adicione ela à lista
+                if (pessoaJuridica != null)
+                {
+                    usuarioList.Add(pessoaJuridica);
+                }
+
+                pessoaJuridica = new PessoaJuridica();
+                pessoaJuridica.SetNome(ExtrairValor(line, "Nome da Empresa:"));
+            }
+            else if (line.StartsWith("CNPJ:"))
+            {
+                pessoaJuridica.SetCnpj(ExtrairValor(line, "CNPJ:"));
+            }
+            else if (line.StartsWith("Nome:"))
+            {
+                // Se houver uma pessoa física anterior, adicione ela à lista
+                if (pessoaFisica != null)
+                {
+                    usuarioList.Add(pessoaFisica);
+                }
+
+                pessoaFisica = new PessoaFisica();
+                pessoaFisica.SetNome(ExtrairValor(line, "Nome:"));
+            }
+            else if (line.StartsWith("CPF:"))
+            {
+                if (pessoaFisica != null)
+                {
+                    pessoaFisica.SetCpf(ExtrairValor(line, "CPF:"));
+                }
+            }
+            else if (line.Trim().StartsWith("0.") || line.Trim().StartsWith("1.") || line.Trim().StartsWith("2."))
+            {
+                Medidor medidor = ProcessarLinhaMedidor(line);
+
+                if (pessoaJuridica != null)
+                {
+                    pessoaJuridica.GetMedidorList().Add(medidor);
+                }
+
+                if (pessoaFisica != null)
+                {
+                    pessoaFisica.GetMedidorList().Add(medidor);
+                }
+            }
+        }
+
+        if (pessoaJuridica != null)
+        {
+            usuarioList.Add(pessoaJuridica);
+        }
+        if (pessoaFisica != null)
+        {
+            usuarioList.Add(pessoaFisica);
+        }
+
+        foreach (var item in usuarioList)
+        {
+            Console.WriteLine($"lISTA FINAL {item.GetNome()}");
+        }
+        return usuarioList;
+    }
     public bool ArquivoExiste()
     {
         return File.Exists(path);

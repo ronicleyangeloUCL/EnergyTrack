@@ -31,7 +31,7 @@ public class Usuario
 
     public static void Insert(PessoaJuridica pessoaJuridica)
     {
-        string path = "resources/usuario.txt";
+        string path = "resources/db/usuario.txt";
 
         UsuarioPessoaJuridicaDTO dados = new UsuarioPessoaJuridicaDTO(pessoaJuridica);
 
