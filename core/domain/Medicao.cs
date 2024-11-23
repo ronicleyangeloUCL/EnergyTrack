@@ -217,7 +217,7 @@ public class Medicao
         return $"DATA LEITURA: {dataLeitura.ToString("dd/MM/yyyy")};\n" +
                $"ATIVO: {ativo} kWh;\n" +
                $"USUÁRIO: {TransformarUpper(usuario.GetNome())};\n" +
-               $"MEDIDOR:\n{medidoresInfo};\n";
+               $"MEDIDOR:\n {medidoresInfo};";
     }
 
     private string TransformarUpper(string value)
