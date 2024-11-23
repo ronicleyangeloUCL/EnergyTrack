@@ -22,3 +22,25 @@ Medidores:
   0. Apelido:sala de estar; Serial:4040;
 ;
 
+Nome:testeUsuario;
+CPF:11111111111;
+Medidores:
+  0. Apelido:; Serial:1212;
+  1. Apelido:tor; Serial:5656;
+;
+
+Nome:ewqeqw;
+CPF:12345678901;
+Medidores:
+  0. Apelido:1212; Serial:3123;
+  1. Apelido:medidor principal ; Serial:5050;
+;
+
+Nome:qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq;
+CPF:12345678901;
+Medidores:
+  0. Apelido:MedidorPrincipal; Serial:123456;
+  1. Apelido:sala; Serial:1221;
+  2. Apelido:tem; Serial:4040;
+;
+

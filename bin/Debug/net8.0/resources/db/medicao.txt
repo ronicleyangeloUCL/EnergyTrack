@@ -19,3 +19,54 @@ Apelido:sala de estar;
 Data: 12/12/2000;
 Consumo: 10000 kWh;
 
+Apelido:1212;
+Serial:3123;
+Data: 12/12/2023;
+Consumo: 300 kWh;
+Apelido:medidor principal;
+Serial:5050;
+Data: 12/12/1013;
+Consumo: 2002 kWh;
+
+Apelido:1212;
+Serial:3123;
+Data: 12/12/2024;
+Consumo: 200 kWh;
+Apelido:medidor principal;
+Serial:5050;
+Data: 12/12/2024;
+Consumo: 1000 kWh;
+
+Apelido:1212;
+Serial:3123;
+Data: 12/12/2024;
+Consumo: 200 kWh; Usuário: ewqeqw;
+Apelido:medidor principal;
+Serial:5050;
+Data: 12/12/2024;
+Consumo: 2000 kWh; Usuário: ewqeqw;
+
+Data da Leitura: 12/12/2024
+Consumo Ativo: 400 kWh
+Usuário: ewqeqw
+Medidores:
+Apelido: 1212, Serial: 3123;
+Data da Leitura: 12/12/2024
+Consumo Ativo: 30000 kWh
+Usuário: ewqeqw
+Medidores:
+Apelido: medidor principal, Serial: 5050;
+
+DATA LEITURA: 12/12/2024
+ATIVO: 500 kWh
+USUÁRIO: EWQEQW
+MEDIDOR:
+Apelido: 1212, Serial: 3123
+;
+DATA LEITURA: 10/03/2024
+ATIVO: 1000 kWh
+USUÁRIO: EWQEQW
+MEDIDOR:
+Apelido: medidor principal, Serial: 5050
+;
+

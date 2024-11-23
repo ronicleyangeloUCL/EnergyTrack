@@ -64,7 +64,7 @@ class MenuService
                 break;
             case 2:
                 Medicao medicao = new Medicao();
-                medicao.RegistroMedidor();
+                medicao.RegistraMedidor();
                 Console.WriteLine("Medidor selecionado.");
                 break;
             case 3:
