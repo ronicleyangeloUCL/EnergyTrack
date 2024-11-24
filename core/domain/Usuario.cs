@@ -39,6 +39,36 @@ public class Usuario
 
         arquivo.EscritaArquivo("", new List<UsuarioPessoaJuridicaDTO> { dados });
     }
+    
+    public static Usuario SolicitarUsuario(List<Usuario> listUsuario)
+    {
+        Console.WriteLine("Digite o CPF (Pessoa Física) ou CNPJ (Pessoa Jurídica) do usuário para registrar medições:");
+        string identificador = Console.ReadLine().Trim();
+
+        foreach (var usuario in listUsuario)
+        {
+            if ((usuario is PessoaFisica pf && pf.GetCpf() == identificador) ||
+                (usuario is PessoaJuridica pj && pj.GetCnpj() == identificador))
+            {
+                return usuario;
+            }
+        }
+
+        return null;
+    }
+
+
+    public static void ExibirUsuario(Usuario usuario)
+    {
+        if (usuario is PessoaFisica pf)
+        {
+            Console.WriteLine($"Pessoa Física: {pf.GetNome().ToUpper()}, CPF: {pf.GetCpf()}");
+        }
+        else if (usuario is PessoaJuridica pj)
+        {
+            Console.WriteLine($"Pessoa Jurídica: {pj.GetNome().ToUpper()}, CNPJ: {pj.GetCnpj()}");
+        }
+    }
 
 
 }

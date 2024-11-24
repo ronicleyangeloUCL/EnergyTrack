@@ -39,11 +39,11 @@ public class Medicao
         List<Medicao> medicoes = new List<Medicao>();
 
         Console.Clear();
-        Usuario usuarioAtual = SolicitarUsuario(listUsuario);
+        Usuario usuarioAtual = Usuario.SolicitarUsuario(listUsuario);
 
         if (usuarioAtual != null)
         {
-            ExibirUsuario(usuarioAtual);
+            Usuario.ExibirUsuario(usuarioAtual);
             RegistrarMedicoes(usuarioAtual, medicoes);
 
             Arquivo<Medicao> arquivo = new Arquivo<Medicao>(caminhoSaveMedicoes);
@@ -52,36 +52,6 @@ public class Medicao
         else
         {
             Console.WriteLine("Usuário não encontrado.");
-        }
-    }
-
-    private Usuario SolicitarUsuario(List<Usuario> listUsuario)
-    {
-        Console.WriteLine("Digite o CPF (Pessoa Física) ou CNPJ (Pessoa Jurídica) do usuário para registrar medições:");
-        string identificador = Console.ReadLine().Trim();
-
-        foreach (var usuario in listUsuario)
-        {
-            if ((usuario is PessoaFisica pf && pf.GetCpf() == identificador) ||
-                (usuario is PessoaJuridica pj && pj.GetCnpj() == identificador))
-            {
-                return usuario;
-            }
-        }
-
-        return null;
-    }
-
-
-    private void ExibirUsuario(Usuario usuario)
-    {
-        if (usuario is PessoaFisica pf)
-        {
-            Console.WriteLine($"Pessoa Física: {pf.GetNome().ToUpper()}, CPF: {pf.GetCpf()}");
-        }
-        else if (usuario is PessoaJuridica pj)
-        {
-            Console.WriteLine($"Pessoa Jurídica: {pj.GetNome().ToUpper()}, CNPJ: {pj.GetCnpj()}");
         }
     }
 
