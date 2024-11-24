@@ -32,10 +32,11 @@ public class Medicao
 
     public void RegistraMedidor()
     {
-        string caminhoListUsuario = "resources/db/usuario.txt";
+        // string caminhoListUsuario = "resources/db/usuario.txt";
         string caminhoSaveMedicoes = "resources/db/medicao.txt";
-
-        List<Usuario> listUsuario = Arquivo<Usuario>.LeituraArquivo(caminhoListUsuario);
+        
+        // Passar o nome da clase que deixar buscar os dados EX: usuario, medidor
+        List<Usuario> listUsuario = Arquivo<Usuario>.ProcessarArquivo("usuario");
         List<Medicao> medicoes = new List<Medicao>();
 
         Console.Clear();
@@ -206,11 +207,24 @@ public class Medicao
     {
         string medidoresInfo = string.Join("\n", medidor.Select(m => $"Apelido: {m.GetApelido()}, Serial: {m.GetSerial()}"));
 
+        string identificador = ""; 
+
+        if (usuario is PessoaFisica pf)
+        {
+            identificador = pf.GetCpf(); 
+        }
+        else if (usuario is PessoaJuridica pj)
+        {
+            identificador = pj.GetCnpj(); 
+        }
+
         return $"DATA LEITURA: {dataLeitura.ToString("dd/MM/yyyy")};\n" +
                $"ATIVO: {ativo} kWh;\n" +
-               $"USUÁRIO: {TransformarUpper(usuario.GetNome())};\n" +
-               $"MEDIDOR:\n {medidoresInfo};";
+               $"NOME: {TransformarUpper(usuario.GetNome())};\n" +
+               $"CPF/CNPJ: {identificador};\n" +  // Exibe o CPF ou CNPJ
+               $"MEDIDOR:\n {medidoresInfo};\n ";
     }
+
 
     private string TransformarUpper(string value)
     {

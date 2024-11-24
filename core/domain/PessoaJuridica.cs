@@ -8,6 +8,7 @@ public class PessoaJuridica : Usuario
     public PessoaJuridica(string cnpj, string nome) : base(nome)
     {
         this._cnpj = cnpj;
+        SetCnpj(cnpj);
     }
         public PessoaJuridica(string nome) : base(nome)
     {

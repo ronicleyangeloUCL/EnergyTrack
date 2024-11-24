@@ -28,6 +28,12 @@ public class Fatura
         List<Usuario> usuarioList = Arquivo<Usuario>.LeituraArquivo("resources/db/usuario.txt");
         Console.WriteLine("lista de usuario", usuarioList);
         Usuario usuarioAtual = Usuario.SolicitarUsuario(usuarioList);
+
+        if (usuarioAtual == null)
+        {
+            Usuario.ExibirUsuario(usuarioAtual);
+            
+        }
     }
     public void ObterMedidorPrincipal()
     {

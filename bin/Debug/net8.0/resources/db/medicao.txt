@@ -100,3 +100,31 @@ USUÁRIO: EWQEQW;
 MEDIDOR:
  Apelido: medidor principal, Serial: 5050;;
 
+DATA LEITURA: 12/12/2023;
+ATIVO: 12312 kWh;
+NOME: EWQEQW;
+MEDIDOR:
+ Apelido: 1212, Serial: 3123;
+ ;
+DATA LEITURA: 12/12/2024;
+ATIVO: 12312 kWh;
+NOME: EWQEQW;
+MEDIDOR:
+ Apelido: medidor principal, Serial: 5050;
+ ;
+
+DATA LEITURA: 12/12/2024;
+ATIVO: 12312 kWh;
+NOME: EWQEQW;
+CPF/CNPJ: 12345678901;
+MEDIDOR:
+ Apelido: 1212, Serial: 3123;
+ ;
+DATA LEITURA: 12/12/2042;
+ATIVO: 23123 kWh;
+NOME: EWQEQW;
+CPF/CNPJ: 12345678901;
+MEDIDOR:
+ Apelido: medidor principal, Serial: 5050;
+ ;
+

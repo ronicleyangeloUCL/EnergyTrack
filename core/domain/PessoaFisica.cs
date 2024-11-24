@@ -14,6 +14,7 @@ namespace Energytrack.core.domain
         public PessoaFisica(string cpf, string nome, List<Medidor> medidor) : base(nome, medidor)
         {
             this._cpf = cpf;
+            SetCpf(cpf);
         }
 
         public string GetCpf() => this._cpf;

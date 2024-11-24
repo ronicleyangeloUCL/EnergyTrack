@@ -168,4 +168,23 @@ public class Arquivo<T> : IArquivo<T>
     {
         return File.Exists(path);
     }
+
+    static internal List<Usuario> ProcessarArquivo(string value)
+    {
+        string caminho = "";
+
+
+        if (value.Equals("usuario"))
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            caminho = "resources/db/usuario.txt";
+            if (!File.Exists(caminho))
+            {
+                return null;
+            }
+            return usuarios = LeituraArquivo(caminho);
+        }
+        return null;
+    }
 }
