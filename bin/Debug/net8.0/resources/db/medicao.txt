@@ -128,3 +128,26 @@ MEDIDOR:
  Apelido: medidor principal, Serial: 5050;
  ;
 
+DATA LEITURA: 12/12/2023;
+ATIVO: 1111111111111 kWh;
+NOME: EWQEQW;
+CPF/CNPJ: ;
+MEDIDOR:
+ Apelido: 1212, Serial: 3123;
+ ;
+DATA LEITURA: 12/12/2024;
+ATIVO: 3123123 kWh;
+NOME: EWQEQW;
+CPF/CNPJ: ;
+MEDIDOR:
+ Apelido: medidor principal, Serial: 5050;
+ ;
+
+DATA LEITURA: 12/12/1212;
+ATIVO: 3123 kWh;
+NOME: TONICLEY;
+CPF/CNPJ: 33333333333;
+MEDIDOR:
+ Apelido: sala de estar, Serial: 4040;
+ ;
+

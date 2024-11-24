@@ -7,7 +7,6 @@ public class Fatura
     private int _tipoBandeira;
     private Medidor _medidor;
     private Usuario _usuario;
-
     public Fatura() {}
     public Fatura(int tipoBandeira, Medidor medidor)
     {

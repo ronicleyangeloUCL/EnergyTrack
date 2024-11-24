@@ -207,21 +207,10 @@ public class Medicao
     {
         string medidoresInfo = string.Join("\n", medidor.Select(m => $"Apelido: {m.GetApelido()}, Serial: {m.GetSerial()}"));
 
-        string identificador = ""; 
-
-        if (usuario is PessoaFisica pf)
-        {
-            identificador = pf.GetCpf(); 
-        }
-        else if (usuario is PessoaJuridica pj)
-        {
-            identificador = pj.GetCnpj(); 
-        }
-
         return $"DATA LEITURA: {dataLeitura.ToString("dd/MM/yyyy")};\n" +
                $"ATIVO: {ativo} kWh;\n" +
                $"NOME: {TransformarUpper(usuario.GetNome())};\n" +
-               $"CPF/CNPJ: {identificador};\n" +  // Exibe o CPF ou CNPJ
+               $"CPF/CNPJ: {usuario.GetIdentificador()};\n" +  // Exibe o CPF ou CNPJ
                $"MEDIDOR:\n {medidoresInfo};\n ";
     }
 
