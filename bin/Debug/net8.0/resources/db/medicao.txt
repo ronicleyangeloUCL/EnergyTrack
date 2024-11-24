@@ -70,3 +70,33 @@ MEDIDOR:
 Apelido: medidor principal, Serial: 5050
 ;
 
+DATA LEITURA: 12/12/2024;
+ATIVO: 200 kWh;
+USUÁRIO: RONICLEY;
+MEDIDOR:
+Apelido: cozinha, Serial: 9090;
+;
+DATA LEITURA: 12/12/2024;
+ATIVO: 22020 kWh;
+USUÁRIO: RONICLEY;
+MEDIDOR:
+Apelido: sala de estar, Serial: 6060;
+;
+DATA LEITURA: 12/12/2024;
+ATIVO: 400 kWh;
+USUÁRIO: RONICLEY;
+MEDIDOR:
+Apelido: quarto, Serial: 5050;
+;
+
+DATA LEITURA: 12/12/2024;
+ATIVO: 200 kWh;
+USUÁRIO: EWQEQW;
+MEDIDOR:
+ Apelido: 1212, Serial: 3123;;
+DATA LEITURA: 12/02/3000;
+ATIVO: 12122 kWh;
+USUÁRIO: EWQEQW;
+MEDIDOR:
+ Apelido: medidor principal, Serial: 5050;;
+

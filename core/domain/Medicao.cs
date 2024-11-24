@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Energytrack.core.domain;
 
 public class Medicao
@@ -120,7 +121,7 @@ public class Medicao
     private DateTime SolicitarDataLeitura()
     {
         Console.Write("Digite a data da leitura (dd/MM/yyyy): ");
-        string dataInput = ExibirFormatoData();
+        string dataInput = LerData();
         return DateTime.ParseExact(dataInput, "dd/MM/yyyy", null);
     }
 
@@ -179,9 +180,9 @@ public class Medicao
         }
     }
 
-    private string ExibirFormatoData()
+    public static string LerData()
     {
-        string dataInput = "";
+        StringBuilder dataInput = new StringBuilder();
 
         while (dataInput.Length < 10)
         {
@@ -189,25 +190,46 @@ public class Medicao
 
             if (Char.IsDigit(tecla))
             {
-                dataInput += tecla;
+                dataInput.Append(tecla);
 
                 if (dataInput.Length == 2 || dataInput.Length == 5)
                 {
-                    dataInput += "/";
+                    dataInput.Append("/");
                 }
 
-                Console.Clear();
-                Console.WriteLine($"Digite a data da leitura (dd/MM/yyyy): {dataInput}");
+                ExibirData(dataInput.ToString());
             }
             else if (tecla == (char)8 && dataInput.Length > 0)
             {
-                dataInput = dataInput.Substring(0, dataInput.Length - 1);
-                Console.Clear();
-                Console.WriteLine($"Digite a data da leitura (dd/MM/yyyy): {dataInput}");
+                dataInput.Remove(dataInput.Length - 1, 1);
+                if (dataInput.Length == 2 || dataInput.Length == 5) 
+                {
+                    dataInput.Remove(dataInput.Length - 1, 1);
+                }
+
+                ExibirData(dataInput.ToString());
             }
         }
 
-        return dataInput;
+        if (!ValidarData(dataInput.ToString()))
+        {
+            Console.WriteLine("\nData inválida. Tente novamente.");
+            return LerData(); 
+        }
+
+        return dataInput.ToString();
+    }
+
+    private static void ExibirData(string data)
+    {
+        Console.Clear();
+        Console.WriteLine($"Digite a data da leitura (dd/MM/yyyy): {data}");
+    }
+
+    private static bool ValidarData(string data)
+    {
+        DateTime dt;
+        return DateTime.TryParseExact(data, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
     }
 
     public override string ToString()
