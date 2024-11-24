@@ -71,6 +71,8 @@ class MenuService
                 Console.WriteLine("Visualizar Consumo.");
                 break;
             case 4:
+                Fatura fatura = new Fatura();
+                fatura.CalcularFatura();
                 Console.WriteLine("Gerar Relatório.");
                 break;
             case 0:

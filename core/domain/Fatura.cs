@@ -4,26 +4,30 @@ namespace Energytrack.core.domain;
 
 public class Fatura
 {
-    private int tipoBandeira;
-    private Medidor medidor;
+    private int _tipoBandeira;
+    private Medidor _medidor;
+    private Usuario _usuario;
 
+    public Fatura() {}
     public Fatura(int tipoBandeira, Medidor medidor)
     {
-        this.tipoBandeira = tipoBandeira;
-        this.medidor = medidor;
+        this._tipoBandeira = tipoBandeira;
+        this._medidor = medidor;
     }
     
-    public int GetTipoBandeira() => tipoBandeira;
-    public Medidor GetMedidor() => medidor;
-    public void SetMedidor(Medidor value) => medidor = value;
-    public void SetTipoBandeira(int value) => tipoBandeira = value;
+    public int GetTipoBandeira() => _tipoBandeira;
+    public Medidor GetMedidor() => _medidor;
+    public Usuario GetUsuario() => _usuario;
+    public void SetMedidor(Medidor value) => _medidor = value;
+    public void SetTipoBandeira(int value) => _tipoBandeira = value;
+    public void SetUsuario(Usuario value) => _usuario = value;
 
 
     public void CalcularFatura()
     {
-        string path = "resources/db/fatura.txt";
-        Arquivo<Medidor> arquivo = new Arquivo<Medidor>();
-        
+        List<Usuario> usuarioList = Arquivo<Usuario>.LeituraArquivo("resources/db/usuario.txt");
+        Console.WriteLine("lista de usuario", usuarioList);
+        Usuario usuarioAtual = Usuario.SolicitarUsuario(usuarioList);
     }
     public void ObterMedidorPrincipal()
     {
@@ -32,6 +36,6 @@ public class Fatura
 
     public override string ToString()
     {
-        return "Fatura " + tipoBandeira;
+        return "Fatura " + _tipoBandeira;
     }
 }

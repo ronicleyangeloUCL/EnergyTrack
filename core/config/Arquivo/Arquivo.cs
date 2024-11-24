@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using Energytrack.core.domain;
-class Arquivo<T> : IArquivo<T>
+public class Arquivo<T> : IArquivo<T>
 {
     private string path;
     public Arquivo() { }
