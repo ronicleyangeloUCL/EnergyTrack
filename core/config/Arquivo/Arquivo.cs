@@ -210,19 +210,18 @@ public class Arquivo<T> : IArquivo<T>
 
         try
         {
-            // Lê todas as linhas do arquivo
             var linhas = File.ReadAllLines(caminho);
 
             foreach (var linha in linhas)
             {
                 Console.WriteLine($"Processando linha: {linha}");
 
-                // Processa a linha que contém "ATIVO:"
                 if (linha.StartsWith("ATIVO:", StringComparison.OrdinalIgnoreCase))
                 {
                     string valorAtivo = linha.Replace("ATIVO:", "").Replace("kWh", "").Replace(";", "").Trim();
                     if (double.TryParse(valorAtivo, out ativo))
                     {
+                        ativo = double.Parse(valorAtivo);
                         Console.WriteLine($"Ativo encontrado: {ativo} kWh");
                     }
                     else
@@ -252,7 +251,7 @@ public class Arquivo<T> : IArquivo<T>
                     if (apelido.Equals("medidor principal", StringComparison.OrdinalIgnoreCase))
                     {
                         medidorPrincipal = new Medidor(apelido, serial);
-                        Console.WriteLine($"Medidor Principal Encontrado: Apelido = {apelido}, Serial = {serial}, Ativo = {ativo} kWh");
+                        // Console.WriteLine($"Medidor Principal Encontrado: Apelido = {apelido}, Serial = {serial}, Ativo = {ativo} kWh");
                         break;
                     }
                 }
@@ -263,14 +262,14 @@ public class Arquivo<T> : IArquivo<T>
             Console.WriteLine($"Erro ao ler o arquivo: {ex.Message}");
         }
 
-        if (medidorPrincipal == null)
-        {
-            Console.WriteLine("Medidor Principal não encontrado.");
-        }
-        else
-        {
-            Console.WriteLine($"Medidor Principal: {medidorPrincipal.GetApelido()} | {medidorPrincipal.GetSerial()} | Ativo: {ativo} kWh");
-        }
+        // if (medidorPrincipal == null)
+        // {
+        //     Console.WriteLine("Medidor Principal não encontrado.");
+        // }
+        // else
+        // {
+        //     Console.WriteLine($"Medidor Principal: {medidorPrincipal.GetApelido()} | {medidorPrincipal.GetSerial()} | Ativo: {ativo} kWh");
+        // }
         MedidorDTO medidorDto = new MedidorDTO(medidorPrincipal.GetApelido(), medidorPrincipal.GetSerial(), ativo);
         return medidorDto;
     }

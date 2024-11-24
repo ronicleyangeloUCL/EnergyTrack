@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Energytrack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dace406243a22e86452e6ffa349bac0bd443450")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+273b8c020625d236e11de921566e1c0b41ea52df")]
 [assembly: System.Reflection.AssemblyProductAttribute("Energytrack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Energytrack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
