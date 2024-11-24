@@ -21,22 +21,22 @@ public class Fatura
     public void SetTipoBandeira(int value) => _tipoBandeira = value;
     public void SetUsuario(Usuario value) => _usuario = value;
 
-
     public void CalcularFatura()
     {
-        List<Usuario> usuarioList = Arquivo<Usuario>.LeituraArquivo("resources/db/usuario.txt");
+        List<Usuario> usuarioList = Arquivo<Usuario>.ProcessarArquivo("usuario".ToLower());
         Console.WriteLine("lista de usuario", usuarioList);
         Usuario usuarioAtual = Usuario.SolicitarUsuario(usuarioList);
-
-        if (usuarioAtual == null)
+        
+        if (usuarioAtual != null)
         {
+            Console.WriteLine("usuario no encontrado", usuarioAtual.GetNome());
             Usuario.ExibirUsuario(usuarioAtual);
-            
+            ObterMedidorPrincipal();
         }
     }
     public void ObterMedidorPrincipal()
     {
-        
+        Arquivo<Medidor>.ProcessarArquivoMedicao("medicao".ToLower());
     }
 
     public override string ToString()

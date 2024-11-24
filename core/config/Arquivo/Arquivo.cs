@@ -158,10 +158,6 @@ public class Arquivo<T> : IArquivo<T>
             usuarioList.Add(pessoaFisica);
         }
 
-        foreach (var item in usuarioList)
-        {
-            Console.WriteLine($"lISTA FINAL {item.GetNome()}");
-        }
         return usuarioList;
     }
     public bool ArquivoExiste()
@@ -172,7 +168,6 @@ public class Arquivo<T> : IArquivo<T>
     static internal List<Usuario> ProcessarArquivo(string value)
     {
         string caminho = "";
-
 
         if (value.Equals("usuario"))
         {
@@ -187,4 +182,96 @@ public class Arquivo<T> : IArquivo<T>
         }
         return null;
     }
+    
+    static internal Medidor ProcessarArquivoMedicao(string value)
+    {
+        string caminho = "";
+
+        if (value.Equals("medicao"))
+        {
+            caminho = "resources/db/medicao.txt";
+            if (!File.Exists(caminho))
+            {
+                return null;
+            }
+        
+            return LeituraArquivoMedidor(caminho); 
+        }
+    
+        return null;
+    }
+    
+    static internal Medidor LeituraArquivoMedidor(string caminho)
+    {
+        Medidor medidorPrincipal = null;
+        double ativo = 0;
+        string apelido = "";
+        string serial = "";
+
+        try
+        {
+            // Lê todas as linhas do arquivo
+            var linhas = File.ReadAllLines(caminho);
+
+            foreach (var linha in linhas)
+            {
+                Console.WriteLine($"Processando linha: {linha}");
+
+                // Processa a linha que contém "ATIVO:"
+                if (linha.StartsWith("ATIVO:", StringComparison.OrdinalIgnoreCase))
+                {
+                    string valorAtivo = linha.Replace("ATIVO:", "").Replace("kWh", "").Replace(";", "").Trim();
+                    if (double.TryParse(valorAtivo, out ativo))
+                    {
+                        Console.WriteLine($"Ativo encontrado: {ativo} kWh");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Erro ao processar o valor do ativo na linha: {linha}");
+                    }
+                }
+                else if (linha.Contains("Apelido:") && linha.Contains("Serial:"))
+                {
+                    var dados = linha.Split(',');
+                    foreach (var dado in dados)
+                    {
+                        if (dado.Contains("Apelido:"))
+                        {
+                            apelido = dado.Replace("Apelido:", "").Trim();
+                        }
+                        else if (dado.Contains("Serial:"))
+                        {
+                            serial = dado.Replace("Serial:", "").Replace(";", "").Trim();
+                        }
+                    }
+
+                    Console.WriteLine($"Apelido encontrado: {apelido}");
+                    Console.WriteLine($"Serial encontrado: {serial}");
+
+                    if (apelido.Equals("medidor principal", StringComparison.OrdinalIgnoreCase))
+                    {
+                        medidorPrincipal = new Medidor(apelido, serial);
+                        Console.WriteLine($"Medidor Principal Encontrado: Apelido = {apelido}, Serial = {serial}, Ativo = {ativo} kWh");
+                        break;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao ler o arquivo: {ex.Message}");
+        }
+
+        if (medidorPrincipal == null)
+        {
+            Console.WriteLine("Medidor Principal não encontrado.");
+        }
+        else
+        {
+            Console.WriteLine($"Medidor Principal: {medidorPrincipal.GetApelido()} | {medidorPrincipal.GetSerial()} | Ativo: {ativo} kWh");
+        }
+
+        return medidorPrincipal;
+    }
+
 }

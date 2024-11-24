@@ -36,7 +36,7 @@ public class Medicao
         string caminhoSaveMedicoes = "resources/db/medicao.txt";
         
         // Passar o nome da clase que deixar buscar os dados EX: usuario, medidor
-        List<Usuario> listUsuario = Arquivo<Usuario>.ProcessarArquivo("usuario");
+        List<Usuario> listUsuario = Arquivo<Usuario>.ProcessarArquivo("usuario".ToLower());
         List<Medicao> medicoes = new List<Medicao>();
 
         Console.Clear();
