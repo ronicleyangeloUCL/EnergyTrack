@@ -183,7 +183,7 @@ public class Arquivo<T> : IArquivo<T>
         return null;
     }
     
-    static internal Medidor ProcessarArquivoMedicao(string value)
+    static internal MedidorDTO ProcessarArquivoMedicao(string value)
     {
         string caminho = "";
 
@@ -201,7 +201,7 @@ public class Arquivo<T> : IArquivo<T>
         return null;
     }
     
-    static internal Medidor LeituraArquivoMedidor(string caminho)
+    static internal MedidorDTO LeituraArquivoMedidor(string caminho)
     {
         Medidor medidorPrincipal = null;
         double ativo = 0;
@@ -247,6 +247,7 @@ public class Arquivo<T> : IArquivo<T>
 
                     Console.WriteLine($"Apelido encontrado: {apelido}");
                     Console.WriteLine($"Serial encontrado: {serial}");
+                    Console.WriteLine($"ATIVO encontrado: {ativo}");
 
                     if (apelido.Equals("medidor principal", StringComparison.OrdinalIgnoreCase))
                     {
@@ -270,8 +271,8 @@ public class Arquivo<T> : IArquivo<T>
         {
             Console.WriteLine($"Medidor Principal: {medidorPrincipal.GetApelido()} | {medidorPrincipal.GetSerial()} | Ativo: {ativo} kWh");
         }
-
-        return medidorPrincipal;
+        MedidorDTO medidorDto = new MedidorDTO(medidorPrincipal.GetApelido(), medidorPrincipal.GetSerial(), ativo);
+        return medidorDto;
     }
 
 }

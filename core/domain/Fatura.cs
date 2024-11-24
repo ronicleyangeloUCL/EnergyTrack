@@ -36,7 +36,8 @@ public class Fatura
     }
     public void ObterMedidorPrincipal()
     {
-        Arquivo<Medidor>.ProcessarArquivoMedicao("medicao".ToLower());
+        MedidorDTO dto = Arquivo<Medidor>.ProcessarArquivoMedicao("medicao".ToLower());
+        Console.WriteLine($"RESULTADO FINAL {dto.GetApelido()} | {dto.GetSerial()} | {dto.GetConsumo()}");
     }
 
     public override string ToString()
