@@ -6,4 +6,5 @@ public enum EBandeiraTarifaria
     AMARELA = 1,
     VERMELHA_PATAMAR_1 = 2,
     VERMELHA_PATAMAR_2 = 3
+    
 }

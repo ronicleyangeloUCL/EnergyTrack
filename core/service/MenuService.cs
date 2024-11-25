@@ -72,7 +72,7 @@ class MenuService
                 break;
             case 4:
                 Fatura fatura = new Fatura();
-                fatura.CalcularFatura();
+                fatura.ProcessarFatura();
                 Console.WriteLine("Gerar Relatório.");
                 break;
             case 0:
@@ -84,6 +84,5 @@ class MenuService
         }
 
         Console.WriteLine("Pressione qualquer tecla para continuar...");
-        Console.ReadKey();
     }
 }

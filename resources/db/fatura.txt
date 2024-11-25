@@ -1,0 +1,9 @@
+Nome: ewqeqw | CPF/CNPJ: 12345678901 | Serial Medidor: medidor principal | Apelido Medidor: medidor principal | Custo Fatura: R$ 1280,00
+Nome: ewqeqw | CPF/CNPJ: 12345678901 | Serial Medidor: medidor principal | Apelido Medidor: medidor principal | Custo Fatura: R$ 1280,00
+Nome: ewqeqw | CPF/CNPJ: 12345678901 | Serial Medidor: medidor principal | Apelido Medidor: medidor principal | Custo Fatura: R$ 1220,00 | Bandeira: Bandeira Amarela
+FaturaDTO;
+
+FaturaDTO;
+
+Fatura: Bandeira Vermelha Patamar 2 | Usuario: ewqeqw | Medidor: medidor principal | Consumo: 2000 kWh | Custo Fatura: R$ 1280,00;
+
