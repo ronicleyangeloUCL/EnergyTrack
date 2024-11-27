@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-
 public class FaturaDTO
 {
     private Usuario _usuario;

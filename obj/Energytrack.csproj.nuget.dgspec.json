@@ -13,6 +13,7 @@
         "packagesPath": "/home/ronicleyangelo/.nuget/packages/",
         "outputPath": "/home/ronicleyangelo/Documentos/projeto/Energytrack/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/home/ronicleyangelo/.nuget/NuGet/NuGet.Config"
         ],

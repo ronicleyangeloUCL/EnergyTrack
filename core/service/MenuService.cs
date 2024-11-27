@@ -68,12 +68,13 @@ class MenuService
                 Console.WriteLine("Medidor selecionado.");
                 break;
             case 3:
+                Medicao consumo = new Medicao();
+                consumo.VisualizarConsumo();
                 Console.WriteLine("Visualizar Consumo.");
                 break;
             case 4:
                 Fatura fatura = new Fatura();
                 fatura.ProcessarFatura();
-                Console.WriteLine("Gerar Relatório.");
                 break;
             case 0:
                 Console.WriteLine("Saindo...");
@@ -83,6 +84,8 @@ class MenuService
                 break;
         }
 
-        Console.WriteLine("Pressione qualquer tecla para continuar...");
+        // Aguarde até que o usuário pressione uma tecla antes de voltar ao menu.
+        Console.WriteLine("\nPressione qualquer tecla para continuar...");
+        Console.ReadKey();
     }
 }

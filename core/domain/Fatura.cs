@@ -114,23 +114,6 @@ public class Fatura
         
         FaturaDTO faturaDTO = new FaturaDTO(usuario, dto, custoFatura,tipoBandeira);
         Insert(faturaDTO);
-        // Mapeando a bandeira para string
-        // string bandeira = tipoBandeira switch
-        // {
-        //     1 => "Bandeira Verde",
-        //     2 => "Bandeira Amarela",
-        //     3 => "Bandeira Vermelha Patamar 1",
-        //     4 => "Bandeira Vermelha Patamar 2",
-        //     _ => "Bandeira Não Definida"
-        // };
-
-        // tranferir do mdedidorDTO para FATURA DTO 
-        // using (StreamWriter writer = new StreamWriter(caminhoArquivo, true))
-        // {
-        //     writer.WriteLine($"Nome: {usuario.GetNome()} | CPF/CNPJ: {usuario.GetIdentificador()} | Serial Medidor: {medidorDto.GetSerial()} | Apelido Medidor: {medidorDto.GetApelido()} | Custo Fatura: R$ {custoFatura:F2} | Bandeira: {bandeira}");
-        // }
-
-        // Console.WriteLine("Informações salvas com sucesso no arquivo.");
     }
     
 

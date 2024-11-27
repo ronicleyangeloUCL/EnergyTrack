@@ -201,6 +201,125 @@ public class Arquivo<T> : IArquivo<T>
         return null;
     }
     
+    static internal List<MedidorDTO> ProcessarListaMedicao(string value)
+    {
+        string caminho = "";
+
+        if (value.Equals("medicao"))
+        {
+            caminho = "resources/db/medicao.txt";
+            if (!File.Exists(caminho))
+            {
+                return null;
+            }
+        
+            return LeituraMedicao(caminho); 
+        }
+    
+        return null;
+    }
+    
+    static List<MedidorDTO> LeituraMedicao(string caminho)
+    {
+        List<MedidorDTO> listaMedicao = new List<MedidorDTO>();
+
+        try
+        {
+            string[] lines = File.ReadAllLines(caminho);
+
+            if (lines.Length == 0)
+            {
+                Console.WriteLine("O arquivo está vazio.");
+                return listaMedicao;
+            }
+
+            MedidorDTO medidorDto = null;
+
+            foreach (var line in lines)
+            {
+                // Ignorar linhas vazias ou delimitadores
+                if (string.IsNullOrWhiteSpace(line) || line == ";")
+                    continue;
+
+                // Criar um novo objeto MedidorDTO quando encontrar uma nova leitura
+                if (medidorDto == null)
+                    medidorDto = new MedidorDTO();
+
+                // Processar cada linha do arquivo
+                if (PercorrerMedicao(line, medidorDto))
+                {
+                    // Adicionar o medidor completo à lista e criar um novo objeto
+                    listaMedicao.Add(medidorDto);
+                    medidorDto = null; 
+                }
+            }
+
+            if (medidorDto != null)
+                listaMedicao.Add(medidorDto);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao ler o arquivo: {ex.Message}");
+        }
+
+        return listaMedicao;
+    }
+
+    private static bool PercorrerMedicao(string line, MedidorDTO medidorDto)
+    {
+        bool medidorCompleto = false;
+
+        try
+        {
+            if (line.Contains("DATA LEITURA:", StringComparison.CurrentCultureIgnoreCase))
+            {
+                if (DateTime.TryParse(line.Replace("DATA LEITURA:", "").Replace(";", "").Trim(), out DateTime dataLeitura))
+                {
+                    medidorDto.SetDataLeitura(dataLeitura);
+                }
+            }
+            else if (line.Contains("ATIVO:", StringComparison.CurrentCultureIgnoreCase))
+            {
+                string consumo = line.Replace("ATIVO:", "").Replace("kWh", "").Replace(";", "").Trim();
+                if (double.TryParse(consumo, out double ativo))
+                {
+                    medidorDto.SetConsumo(ativo);
+                }
+            }
+            else if (line.Contains("NOME:", StringComparison.CurrentCultureIgnoreCase))
+            {
+                medidorDto.GetUsuario().SetNome(line.Replace("NOME:", "").Replace(";", "").Trim());
+            }
+            else if (line.Contains("CPF/CNPJ:", StringComparison.CurrentCultureIgnoreCase))
+            {
+                medidorDto.GetUsuario().SetIdentificador(line.Replace("CPF/CNPJ:", "").Replace(";", "").Trim());
+            }
+            else if (line.Contains("Apelido:") && line.Contains("Serial:"))
+            {
+                var dados = line.Split(',');
+                foreach (var dado in dados)
+                {
+                    if (dado.Contains("Apelido:"))
+                    {
+                        medidorDto.SetApelido(dado.Replace("Apelido:", "").Trim());
+                    }
+                    else if (dado.Contains("Serial:"))
+                    {
+                        medidorDto.SetSerial(dado.Replace("Serial:", "").Trim());
+                    }
+                }
+
+                medidorCompleto = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao processar linha: {line}. Erro: {ex.Message}");
+        }
+
+        return medidorCompleto;
+    }
+
     static internal MedidorDTO LeituraArquivoMedidor(string caminho)
     {
         Medidor medidorPrincipal = null;
