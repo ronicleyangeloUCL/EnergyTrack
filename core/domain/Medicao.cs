@@ -149,7 +149,7 @@ public class Medicao
 
                 medicao.ForEach(med =>
                 {
-                    Console.WriteLine($"{med.GetDataLeitura():dd/MM/yyyy}   | {med.GetConsumo(),10:F2} | {med.GetApelido(),-18} | {med.GetSerial(),10:F2}");
+                    Console.WriteLine($"{med.GetDataLeitura():dd/MM/yyyy}   | {med.GetConsumo()} kwh | {med.GetApelido(),-18} | {med.GetSerial(),10:F2}");
                 });
             }
             else
