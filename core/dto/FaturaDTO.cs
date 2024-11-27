@@ -25,7 +25,6 @@ public class FaturaDTO
 
     public override string ToString()
     {
-        // Mapeamento da bandeira para string
         string bandeira = _tipoBandeira switch
         {
             1 => "Bandeira Verde",
@@ -35,7 +34,6 @@ public class FaturaDTO
             _ => "Bandeira Não Definida"
         };
 
-        // Retornando uma string formatada com as informações da fatura
         return $"Fatura: {bandeira} | Usuario: {_usuario.GetNome()} | Medidor: {_medidorDTO.GetApelido()} | Consumo: {_medidorDTO.GetConsumo()} kWh | Custo Fatura: R$ {_custoFatura:F2}";
     }
 

@@ -23,14 +23,6 @@ public class MedidorDTO
         this._dataLeitura = dataLeitura;
         this._usuario = usuario;
     }
-    
-    // private bool isMedidor() 
-    // {
-    //     List<UsuarioPessoaFisicaDTO<PessoaFisica>> fisica = new List<UsuarioPessoaFisicaDTO<PessoaFisica>>();
-    //     Arquivo<Medidor> arquivo = new Arquivo<Medidor>("resources/usuario.txt");
-    //     bool success = arquivo.leituraArquivo(fisica);
-    //     return success && fisica != null;
-    // }
 
     public string GetApelido() => this._apelido;
     public string GetSerial() => this._serial;
@@ -46,9 +38,9 @@ public class MedidorDTO
     public void SetDataLeitura(DateTime value) => _dataLeitura = value;
     public void SetUsuario(Usuario value) => _usuario = value;
 
-    // public override string ToString() 
-    // {
-    //     return $"Serial: {_serial}, Apelido: {_apelido}, Consumo: {_consumo:F2}, " +
-    //            $"Data de Leitura: {_dataLeitura:yyyy-MM-dd}, Usuário: {_usuario?.ToString() ?? "N/A"}";
-    // }
+    public override string ToString() 
+    {
+        return $"Serial: {_serial}, Apelido: {_apelido}, Consumo: {_consumo:F2}, " +
+               $"Data de Leitura: {_dataLeitura:yyyy-MM-dd}, Usuário: {_usuario?.ToString() ?? "N/A"}";
+    }
 }

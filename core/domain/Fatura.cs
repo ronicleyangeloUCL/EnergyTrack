@@ -116,14 +116,12 @@ public class Fatura
         Insert(faturaDTO);
     }
     
-
     private void Insert(FaturaDTO dto) 
     {
         string caminhoArquivo = "resources/db/fatura.txt";
         Arquivo<FaturaDTO> arquivo = new Arquivo<FaturaDTO>(caminhoArquivo); 
         arquivo.EscritaArquivo("", new List<FaturaDTO> {dto});
     }
-
 
     public override string ToString()
     {

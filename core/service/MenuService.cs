@@ -5,8 +5,6 @@ class MenuService
 {
     private int _escolha = 0;
 
-    public MenuService() {}
-
     public void Menu()
     {
         do 
@@ -65,12 +63,10 @@ class MenuService
             case 2:
                 Medicao medicao = new Medicao();
                 medicao.RegistraMedidor();
-                Console.WriteLine("Medidor selecionado.");
                 break;
             case 3:
                 Medicao consumo = new Medicao();
                 consumo.VisualizarConsumo();
-                Console.WriteLine("Visualizar Consumo.");
                 break;
             case 4:
                 Fatura fatura = new Fatura();

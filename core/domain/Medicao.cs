@@ -21,7 +21,6 @@ public class Medicao
         Usuario = usuario;
     }
 
-    // Métodos Getters e Setters
     public DateTime GetDataLeitura() => DataLeitura;
     public List<Medidor> GetMedidores() => Medidores;
     public double GetAtivo() => Ativo;
@@ -32,7 +31,6 @@ public class Medicao
     public void SetAtivo(double value) => Ativo = value;
     public void SetUsuario(Usuario value) => Usuario = value;
 
-    // Registro de medição
     public void RegistraMedidor()
     {
         string caminhoSaveMedicoes = "resources/db/medicao.txt";
@@ -127,7 +125,6 @@ public class Medicao
         }
     }
 
-    // Visualizar consumo
     public void VisualizarConsumo()
     {
         List<Usuario> listUsuario = Arquivo<Usuario>.ProcessarArquivo("usuario".ToLower());
@@ -163,7 +160,6 @@ public class Medicao
         }
     }
 
-    // Método ToString
     public override string ToString()
     {
         string medidoresInfo = string.Join("\n", Medidores.Select(m => $"Apelido: {m.GetApelido()}, Serial: {m.GetSerial()}"));
